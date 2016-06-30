@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/arp1t/basic_angular_app#readme",
   "devDependencies": {
+    "browser-sync": "^2.13.0",
     "gulp": "^3.9.1"
   }
 }
