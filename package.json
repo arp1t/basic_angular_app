@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/arp1t/basic_angular_app/issues"
   },
-  "homepage": "https://github.com/arp1t/basic_angular_app#readme"
+  "homepage": "https://github.com/arp1t/basic_angular_app#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
