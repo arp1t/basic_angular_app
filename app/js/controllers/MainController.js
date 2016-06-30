@@ -1,0 +1,10 @@
+app.controller('MainController', ['$scope', function($scope) {
+  $scope.programs=[
+    {
+    series: "Sherlock", series_img: "img/sherlock.jpg", genre: "Crime drama", season: 3, episode: "The Empty Hearse", description: "Three years after his reported Reichenbach Fall demise, Sherlock, who has been cleared of all fraud charges against him, returns with Mycroft's help to a London under threat of terrorist attack. John has moved on and has a girlfriend, Mary Morstan. Sherlock enlists Molly to assist him, but when John is kidnapped by unknown assailants and is rescued by Sherlock and Mary, John returns to help find the terrorists and an underground plot to blow up the Houses of Parliament during an all night sitting on Guy Fawkes Night.", datetime: new Date(2014, 11, 31, 21, 00, 00, 00)
+  },
+    {
+    series: "Blacklist", series_img: "http://netflixlife.com/files/2015/08/The-Blacklist.jpg", genre: "Crime thriller", season: 1, episode: "The Kingmaker", description: "After a politician in Prague is framed for a murder, Red suspects it's the work of The Kingmaker (guest star Linus Roache) -- a strategist behind the rise of some of the world's most powerful politicians. Red is seen meeting with an ally about the Prague matter. Elizabeth views the photos that Tom had led her to, which show Red at the hospital where her adoptive father Sam had died. Red meets with Fitch, telling him his businesses are under attack and suggesting it's a mutual problem, and proposes that they cooperate against their common enemy. Fitch meets with members of his global alliance, then tells Red they have chosen not to ally themselves with him, despite Red's threats to expose them. Elizabeth phones Red to inform him about The Kingmaker. Red says he wants 10 minutes with the man to find out who ordered the Prague incident, but Liz has to tell him that The Kingmaker is dead.", datetime: new Date(2014, 03, 28, 20, 30, 00, 00)
+  }    
+  ];
+}]);
