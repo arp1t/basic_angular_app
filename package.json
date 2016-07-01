@@ -28,6 +28,11 @@
   "homepage": "https://github.com/arp1t/basic_angular_app#readme",
   "devDependencies": {
     "browser-sync": "^2.13.0",
-    "gulp": "^3.9.1"
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
+    "gulp": "^3.9.1",
+    "mocha": "^2.5.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
   }
 }
