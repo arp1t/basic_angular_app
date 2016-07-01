@@ -1,6 +1,9 @@
 #Setup NPM, Gulp, Mocha, Chai and Webpack with AngularJS from scratch
 
-Prerequisites: Make sure you have XCode and git installed (Tested on OSX)
+This is a very basic setup/seed to make everything work and get started on your project. Tested on
+OSX El Capitan
+
+Prerequisites: Basic knowledge of AngularJS and make sure you have XCode and git installed
 
 #Install NPM:
 
@@ -156,4 +159,70 @@ $ npm test
 //NPM will run ./node_modules/mocha/bin/mocha which we already typed in our package.json
 ```
 #Webpack:
-To be added.
+
+Install webpack, css-loader and style-loader:
+```
+$ npm install --save-dev webpack
+$ npm install --save-dev css-loader
+$ npm install --save-dev style-loader
+```
+Create 'webpack.config.js' in 'basic_angular_app/' and paste this code:
+```
+var webpack = require('webpack');
+
+var config = {
+  context: __dirname + '/app',
+  entry: './index.js',
+  output: {
+  path: __dirname + '/app',
+  filename: 'bundle.js'
+  },
+
+  plugins: [
+  new webpack.DefinePlugin({
+  ON_TEST: process.env.NODE_ENV === 'test'
+  })
+  ],
+
+  module: {
+  loaders: [
+  {test: /\.css$/, loader: 'style!css', exclude: /node_modules/},
+  ]
+  }
+};
+
+if (process.env.NODE_ENV === 'production') {
+  config.output.path = __dirname + '/dist';
+}
+
+module.exports = config;
+```
+Create app/index.js and paste this:
+```
+//Including CSS
+require ('./css/main.css');
+
+//Including JS
+require('./js/vendor/angular.min.js');
+```
+Remove this css and js include from index.html and replace it with
+```
+<script src="bundle.js"></script>
+```
+Run webpack to create a bundle:
+```
+$ webpack
+//OR
+$ ./node_modules/webpack/bin/webpack.js
+//This will bundle CSS and JS mentioned in index.js following configuration in webpack.config.js
+```
+Check if everything loads correctly:
+```
+$ gulp watch
+//OR
+$ ./node_modules/gulp/bin/gulp.js watch
+```
+Later, you can minify, uglify etc those files and put it in production and integrate he task with gulp.
+
+#End
+I have added a 'setup' branch with complete configuration that works for me.
