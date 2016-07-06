@@ -224,5 +224,114 @@ $ ./node_modules/gulp/bin/gulp.js watch
 ```
 Later, you can minify, uglify etc those files and put it in production and integrate he task with gulp.
 
+#Notification:
+Reference: http://sachinchoolur.github.io/angular-flash/
+
+Include angular-flash CSS and JS in index.html
+```
+<link href="https://raw.githubusercontent.com/sachinchoolur/angular-flash/master/dist/angular-flash.css" rel="stylesheet" />
+
+<script src="https://raw.githubusercontent.com/sachinchoolur/angular-flash/master/dist/angular-flash.min.js"></script>
+```
+Include 'ngFlash' as a dependency in app.js
+```
+var app=angular.module("BoltNetworkApp",['ngFlash','ui.router']);
+```
+Paste the FlashController in app.js
+```
+// Flash controller
+app.controller('NotificationController', ['$rootScope', '$scope', 'Flash', '$timeout', function($rootScope, $scope, Flash, $timeout) {
+  $scope.success = function() {
+  var message = '<strong>Well done!</strong> You successfully read this important alert message.';
+  Flash.create('success', message);
+  };
+  $scope.info = function() {
+  var message = '<strong>Heads up!</strong> This alert needs your attention, but it\'s not super important.';
+  Flash.create('info', message);
+  };
+  $scope.warning = function() {
+  var message = '<strong>Warning!</strong> Better check yourself, you\'re not looking too good.';
+  Flash.create('warning', message);
+  };
+  $scope.danger = function() {
+  var message = '<strong>Oh snap!</strong> Change a few things up and try submitting again.';
+  Flash.create('danger', message);
+  };
+}]);
+```
+
+This is the code to include flash message:
+```
+<div ng-controller="NotificationController">
+  <flash-message duration="5000"></flash-message>
+</div>
+```
+
+This is the code to trigger notifications:
+```
+<div ng-controller="NotificationController">
+  <button class="btn btn-success" ng-click="success()">Success</button>
+  <button class="btn btn-info" ng-click="info()">Info</button>
+  <button class="btn btn-warning" ng-click="warning()">Warning</button>
+  <button class="btn btn-danger" ng-click="danger()">Danger</button>
+</div>
+```
+Update app/views/home.html:
+```
+<div class="main">
+<div ng-controller="NotificationController">
+<flash-message duration="5000"></flash-message>
+</div>
+  <div class="container">
+  <div class="content" ng-repeat="program in programs">
+<program-listing listing="program"></program-listing>
+  <div ng-controller="NotificationController">
+  <button class="btn btn-success" ng-click="success()">Success</button>
+<button class="btn btn-info" ng-click="info()">Info</button>
+<button class="btn btn-warning" ng-click="warning()">Warning</button>
+<button class="btn btn-danger" ng-click="danger()">Danger</button>
+</div>
+  </div>
+  </div>
+</div>
+```
+Update app/views/about.html:
+```
+<div class="main">
+<div ng-controller="NotificationController">
+<flash-message duration="5000"></flash-message>
+</div>
+  <div class="container">
+<h1>About Us</h1>
+  <div ng-controller="NotificationController">
+  <button class="btn btn-success" ng-click="success()">Success</button>
+<button class="btn btn-info" ng-click="info()">Info</button>
+<button class="btn btn-warning" ng-click="warning()">Warning</button>
+<button class="btn btn-danger" ng-click="danger()">Danger</button>
+</div>
+</div>
+</div>
+```
+Update app/views/pricing.html:
+```
+<div ng-controller="NotificationController">
+<button class="btn btn-success" ng-click="success()">Success</button>
+<button class="btn btn-info" ng-click="info()">Info</button>
+<button class="btn btn-warning" ng-click="warning()">Warning</button>
+<button class="btn btn-danger" ng-click="danger()">Danger</button>
+</div>
+<div class="main">
+  <div class="container">
+<h1>Pricing Page</h1>
+</div>
+<div ng-controller="NotificationController">
+<flash-message duration="5000"></flash-message>
+</div>
+</div>
+```
+Later on, you can make a separate template for notification messages or include the html in the header template to avoid redundancy.
+
 #End
 I have added a 'setup' branch with complete configuration that works for me.
+
+Additionally, you can include 'angular-flash.min.js' and 'angular-ui-router.js' into index.js, so that webpack can take care of the includes.
