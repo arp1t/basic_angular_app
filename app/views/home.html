@@ -1,7 +1,16 @@
 <div class="main">
+<div ng-controller="NotificationController">
+<flash-message duration="5000"></flash-message>
+</div>
   <div class="container">
-    <div class="content" ng-repeat="program in programs">
-				<program-listing listing="program"></program-listing>
-    </div>
+  <div class="content" ng-repeat="program in programs">
+<program-listing listing="program"></program-listing>
+  <div ng-controller="NotificationController">
+  <button class="btn btn-success" ng-click="success()">Success</button>
+<button class="btn btn-info" ng-click="info()">Info</button>
+<button class="btn btn-warning" ng-click="warning()">Warning</button>
+<button class="btn btn-danger" ng-click="danger()">Danger</button>
+</div>
+  </div>
   </div>
 </div>
